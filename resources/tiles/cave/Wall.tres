@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TileDefinition" format=3 uid="uid://2tham8pskl4t"]
+
+[ext_resource type="Script" uid="uid://cj8hv1mqav6tp" path="res://src/world/TileDefinition.gd" id="1_6fck8"]
+[ext_resource type="Texture2D" uid="uid://bnhrotvi1pe1q" path="res://assets/tilemaps/Cave.png" id="2_fa30b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa30b"]
+atlas = ExtResource("2_fa30b")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_6fck8")
+collision_layer = 1
+texture = SubResource("AtlasTexture_fa30b")
+metadata/_custom_type_script = "uid://cj8hv1mqav6tp"

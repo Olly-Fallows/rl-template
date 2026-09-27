@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://caynia81ttlh3"]
+
+[ext_resource type="Script" uid="uid://4c5ttepdh4re" path="res://src/world/Level.gd" id="1_pcu7d"]
+[ext_resource type="Script" uid="uid://fdt3fx5xsboq" path="res://src/world/procgen/caves/Tunnel.gd" id="2_3dx25"]
+[ext_resource type="Script" uid="uid://do1f3ti6dwoao" path="res://src/world/Grid.gd" id="2_l6grw"]
+[ext_resource type="Resource" uid="uid://cy6upnf4ara4j" path="res://resources/tiles/cave/Floor.tres" id="2_nuoa6"]
+[ext_resource type="Resource" uid="uid://2tham8pskl4t" path="res://resources/tiles/cave/Wall.tres" id="4_kri1i"]
+
+[sub_resource type="Resource" id="Resource_pcu7d"]
+script = ExtResource("2_3dx25")
+wall = ExtResource("4_kri1i")
+ground = ExtResource("2_nuoa6")
+full_region = Rect2i(0, 0, 200, 50)
+metadata/_custom_type_script = "uid://fdt3fx5xsboq"
+
+[sub_resource type="GDScript" id="GDScript_e16kn"]
+script/source = "extends Camera2D
+
+func _physics_process(delta: float) -> void:
+	global_position += Input.get_vector(\"move_left\", \"move_right\", \"move_up\", \"move_down\") * 500 * delta
+"
+
+[node name="Testing" type="Node2D" unique_id=1082409173 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_pcu7d")
+generator = SubResource("Resource_pcu7d")
+grid = NodePath("Grid")
+
+[node name="Grid" type="Node2D" parent="." unique_id=7270360]
+script = ExtResource("2_l6grw")
+metadata/_custom_type_script = "uid://do1f3ti6dwoao"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=681500168]
+script = SubResource("GDScript_e16kn")
